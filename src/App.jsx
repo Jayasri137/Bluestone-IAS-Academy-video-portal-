@@ -8,6 +8,8 @@ import StudentLayout from './StudentPortal/StudentLayout';
 import StudentDatabase from './AdminLogin/StudentDatabase'; 
 import StudentPortal from './StudentPortal/StudentDashboard';
 import StudentManage from './StudentPortal/Registration';
+import MaterialsManage from './AdminLogin/Materials';
+import Material from './StudentPortal/Material';
 
 function App() {
   return (
@@ -20,12 +22,14 @@ function App() {
           <Route index element={<Navigate to="videos" replace />} />
           <Route path="videos" element={<VideoManage />} />
           <Route path="students" element={<StudentDatabase />} /> 
+          <Route path="materials" element={<MaterialsManage />} />
         </Route>
 
         {/* FIXED STUDENT PORTAL NESTING */}
         <Route path="/student" element={<StudentLayout />}>
           <Route index element={<Navigate to="video" replace />} />
           <Route path="video" element={<Video />} />
+          <Route path="material" element={<Material />} />
           <Route path="dashboard" element={<StudentPortal/>} />
           <Route path="registration" element={<StudentManage />} />
         </Route>

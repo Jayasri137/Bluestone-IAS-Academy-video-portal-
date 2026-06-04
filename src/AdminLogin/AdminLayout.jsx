@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
-import { Video, LogOut, Users, ShieldCheck, Bell, Search } from 'lucide-react';
+import { Video, LogOut, Users, ShieldCheck, Bell, Search, BookOpen } from 'lucide-react';
 
 const AdminLayout = () => {
   const navigate = useNavigate();
@@ -32,6 +32,11 @@ const AdminLayout = () => {
             <Users size={20} />
             <span className="font-semibold">Student Database</span>
           </div>
+          <div onClick={() => navigate('/admin/materials')} 
+               className={`flex items-center space-x-3 p-4 rounded-xl cursor-pointer transition-all duration-200 ${isActive('/admin/materials') ? 'bg-[#c5a059] text-white shadow-lg' : 'text-gray-400 hover:bg-white/10'}`}>
+            <BookOpen size={20} />
+            <span className="font-semibold">Study Material</span>
+          </div>
         </nav>
 
         <button onClick={() => navigate('/')} className="m-6 p-4 flex items-center justify-center space-x-3 bg-red-500/10 text-red-400 rounded-xl hover:bg-red-500 hover:text-white transition-all font-bold border border-red-500/10">
@@ -46,7 +51,11 @@ const AdminLayout = () => {
         <header className="h-20 bg-white border-b border-gray-100 flex items-center justify-between px-10 z-20 shrink-0">
           <div className="flex flex-col">
             <h2 className="text-xl font-bold text-[#1a3a5f]">
-              {isActive('/admin/videos') ? 'Video Repository' : 'Student Database'}
+              {isActive('/admin/videos') 
+                ? 'Video Repository' 
+                : isActive('/admin/materials') 
+                ? 'Study Resources Repository' 
+                : 'Student Database'}
             </h2>
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
